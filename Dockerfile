@@ -1,6 +1,6 @@
-ARG PHP_VERSION=7.3
+ARG PHP_VERSION=7.4
 
-FROM php:7.3-apache-buster
+FROM php:7.4-apache-buster
 
 LABEL maintainer="Devil.Ster.1"
 LABEL version="1.0.1"
