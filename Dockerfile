@@ -107,6 +107,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-enable memcached \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    --allow-downgrades --allow-remove-essential --allow-change-held-packages \
+       \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
 # END PHP Modules Install
 
 # START Composer Install
