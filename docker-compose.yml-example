@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "./test:/var/www"
+    environment:
+      CUSTOM_SERVER_NAME: "mysite.loc"
+
+
