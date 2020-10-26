@@ -95,13 +95,6 @@ RUN set -x && \
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     --allow-downgrades --allow-remove-essential --allow-change-held-packages \
-       libpq-dev \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
-    && docker-php-ext-install -j$(nproc) pgsql \
-    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    --allow-downgrades --allow-remove-essential --allow-change-held-packages \
        libmemcached-dev \
     && pecl install memcached \
     && docker-php-ext-enable memcached \
@@ -114,6 +107,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && docker-php-ext-enable apcu \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    --allow-downgrades --allow-remove-essential --allow-change-held-packages \
+       libpq-dev \
+    && docker-php-ext-install -j$(nproc) pgsql \
+    && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # END PHP Modules Install
 
 # START Composer Install
