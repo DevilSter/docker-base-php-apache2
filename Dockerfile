@@ -150,5 +150,7 @@ COPY default-sites /etc/apache2/sites-available
 RUN a2ensite default-ssl
 # END Configure Apache2
 
+WORKDIR  /var/www
+
 EXPOSE 80
 EXPOSE 443
