@@ -110,8 +110,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 RUN apt-get update && apt-get install -y --no-install-recommends \
     --allow-downgrades --allow-remove-essential --allow-change-held-packages \
        libpq-dev \
-    && docker-php-ext-install -j$(nproc) pgsql \
+    && docker-php-ext-install -j$(nproc) pgsql pdo_pgsql \
     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     --allow-downgrades --allow-remove-essential --allow-change-held-packages \
+#       postgresql-dev \
+#     && pecl install pdo_pgsql \
+#     && docker-php-ext-enable pdo_pgsql \
+#     && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # END PHP Modules Install
 
 # START Composer Install
